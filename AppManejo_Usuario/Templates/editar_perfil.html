@@ -1,0 +1,19 @@
+
+    <h1>Formulario - Editar Perfil</h1>
+    <h1>De {{usuario}}</h1>
+
+
+    <form action="" method="POST">{% csrf_token %}
+
+        <!-- Acá está la magia de Django-->
+
+        <table>
+
+            {{ Formulario.as_table }}
+
+        </table>
+        
+        <input type="submit", value="Enviar">
+        <a class=”btn btn-danger” {% url ‘Eliminar_Usuario’ usuario.id %}>Borrar</a>
+
+    </form>
