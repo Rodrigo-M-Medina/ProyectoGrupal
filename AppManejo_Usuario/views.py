@@ -3,6 +3,8 @@ from django.contrib.auth import login, authenticate, logout
 from AppManejo_Usuario.forms import CrearUsuario, UserEditForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.views.generic.edit import DeleteView
+from django.contrib.auth.models import User
+from django.urls import reverse_lazy
 
 def inicio(request):
     return render (request, "Inicio.html")
@@ -74,14 +76,25 @@ def editarUsuario(request):
 #----------- borrar usuario -----------------
 
 def eliminarUsuario(request, pk):
-    usuario = UserEditForm.objects.filter(id=pk)
+    usuario = User.objects.filter(id=pk)
     usuario.delete()
-    usuarios=UserEditForm.objects.all()
-    return render(request, "Inicio.html", {"mensaje":"Usuario eliminado correctamente", "usuario":usuarios})
+    usuarios=User.objects.all()
+    return usuariosRegistrados(request)
 
 #------------ mostrar usuarios --------------
 
 def usuariosRegistrados(request):
-    usuarios=UserEditForm.object.all()
+    usuarios = User.objects.all()
     return render(request, "usuarios_registrados.html", {"usuarios":usuarios} )
+
+
+#------------- eliminar usuarios ---------
+
+'''    class EliminarUsuarios(DeleteView):
+    model = User
+    success_url = reverse_lazy ("inicio")'''
+
+
+
+
 

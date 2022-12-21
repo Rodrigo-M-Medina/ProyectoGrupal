@@ -4,4 +4,9 @@
 
 	{{ usuarios.username }} {{ usuarios.email }} {{ usuarios.id }}
 
-{% endfor %}
+	<a href={% url 'Eliminar_Usuarios' usuarios.pk %}>Borrar</a>
+	
+	<br>
+	
+	{% endfor %}
+
