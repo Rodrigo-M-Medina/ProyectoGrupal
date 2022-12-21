@@ -2,9 +2,8 @@ from django.shortcuts import render
 from django.contrib.auth import login, authenticate, logout
 from AppManejo_Usuario.forms import CrearUsuario, UserEditForm
 from django.contrib.auth.forms import AuthenticationForm
-from django.views.generic.edit import DeleteView
 from django.contrib.auth.models import User
-from django.urls import reverse_lazy
+
 
 def inicio(request):
     return render (request, "Inicio.html")
